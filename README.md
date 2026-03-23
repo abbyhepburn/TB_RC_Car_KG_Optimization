@@ -33,8 +33,3 @@ Treat the folder boundaries below as the “contract” between teams:
 - Data processing + graph loading: `data_team/`
 - Chat API: `backend/`
 - Chat UI: `frontend/`
-
-## Scaffold status
-
-This scaffold currently includes a minimal set of files so Cursor can scaffold the rest iteratively.
-If you want, I can expand from the minimal scaffold to the full repository structure described in `docs/` next.
