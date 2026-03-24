@@ -33,3 +33,82 @@ Treat the folder boundaries below as the “contract” between teams:
 - Data processing + graph loading: `data_team/`
 - Chat API: `backend/`
 - Chat UI: `frontend/`
+
+## File structure
+
+```text
+.
+├── README.md
+├── LICENSE
+├── Makefile
+├── docker-compose.yml
+├── backend/
+│   ├── requirements.txt
+│   └── app/
+│       ├── main.py
+│       ├── api/routes/
+│       │   ├── chat.py
+│       │   └── health.py
+│       ├── core/
+│       │   ├── config.py
+│       │   └── logging_config.py
+│       ├── models/
+│       │   └── schemas.py
+│       └── services/
+│           ├── chat_service.py
+│           ├── graph_client.py
+│           ├── query_templates.py
+│           └── answer_formatter.py
+├── frontend/
+│   ├── package.json
+│   ├── index.html
+│   ├── tsconfig.json
+│   ├── vite.config.ts
+│   ├── public/
+│   │   └── favicon.svg
+│   └── src/
+│       ├── main.tsx
+│       ├── App.tsx
+│       ├── lib/api.ts
+│       ├── types/chat.ts
+│       └── components/
+│           ├── ChatLayout.tsx
+│           ├── ChatInput.tsx
+│           └── MessageList.tsx
+├── data_team/
+│   ├── README.md
+│   ├── incoming/
+│   │   └── .gitkeep
+│   ├── processing/
+│   │   ├── validate_raw_telemetry.py
+│   │   ├── clean_raw_telemetry.py
+│   │   ├── build_sessions_csv.py
+│   │   └── build_states_csv.py
+│   └── graph/
+│       ├── load_to_neo4j.py
+│       └── cypher/
+│           ├── constraints.cypher
+│           └── load_queries.cypher
+├── electrical_dropoff/
+│   ├── README.md
+│   └── raw_runs/
+│       └── .gitkeep
+├── docs/
+│   ├── architecture/
+│   │   ├── system_overview.md
+│   │   └── graph_schema_notes.md
+│   ├── repo_design/
+│   │   └── RC_Car_Repo_Design_Document.md
+│   └── team_handoffs/
+│       ├── data_team_workflow.md
+│       └── electrical_team_workflow.md
+├── infra/
+│   ├── Dockerfile.backend
+│   └── Dockerfile.frontend
+└── scripts/
+    ├── bootstrap.sh
+    ├── run_backend.sh
+    ├── run_frontend.sh
+    ├── run_data_pipeline.sh
+    └── load_graph.sh
+```
