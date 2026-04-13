@@ -23,8 +23,8 @@ export default function ChatLayout() {
   // TODO-20 (Required): Set up state for messages and loading.
   //
   // Use React's useState:
-  //   const [messages, setMessages] = useState<Message[]>([]);
-  //   const [loading, setLoading] = useState(false);
+     const [messages, setMessages] = useState<Message[]>([]);
+     const [loading, setLoading] = useState(false);
   //
   // Then write a handleSend function that:
   //   1. Receives a message string from ChatInput.
@@ -39,6 +39,21 @@ export default function ChatLayout() {
   // Hint — updating arrays in React state:
   //   setMessages(prev => [...prev, newMessage]);
 
+  async function handleSend(message: string) {
+  setMessages(prev => [...prev, { role: "user", text: message }]);
+  setLoading(true);
+
+  try {
+    const response = await sendChat(message);
+    setMessages(prev => [...prev, { role: "bot", text: response.answer }]);
+  } catch (err) {
+    const errMessage = err instanceof Error ? err.message : "Unknown error";
+    setMessages(prev => [...prev, { role: "bot", text: `Error: ${errMessage}` }]);
+  } finally {
+    setLoading(false);
+  }
+}
+  
   // TODO-21 (Required): Render the layout with MessageList and ChatInput.
   //
   // Return JSX like:
