@@ -39,17 +39,8 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     # TODO-2 (Required): Add two fields — `answer` and `cypher`.
-    #
-    # `answer` — the human-readable response shown in the chat UI.
-    #   - type: str
-    #   - required
-    #
-    # `cypher` — the generated Cypher query (shown for debugging/teaching).
-    #   - type: str or None  (written as: str | None)
-    #   - optional, default to None
-    #
-    # Example of an optional nullable field:
-    #   debug_info: str | None = Field(default=None, description="Extra info")
+answer: str = Field(description="The human-readable response shown in the chat UI.")
+cypher: str | None = Field(default=None, description="The generated Cypher query (shown for debugging/teaching).")
     pass
 
 
