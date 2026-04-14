@@ -39,21 +39,18 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     # TODO-2 (Required): Add two fields — `answer` and `cypher`.
-    #
-    # `answer` — the human-readable response shown in the chat UI.
-    #   - type: str
-    #   - required
-    #
-    # `cypher` — the generated Cypher query (shown for debugging/teaching).
-    #   - type: str or None  (written as: str | None)
-    #   - optional, default to None
-    #
-    # Example of an optional nullable field:
-    #   debug_info: str | None = Field(default=None, description="Extra info")
+answer: str = Field(description="The human-readable response shown in the chat UI.")
+cypher: str | None = Field(default=None, description="The generated Cypher query (shown for debugging/teaching).")
     pass
 
 
 class HealthResponse(BaseModel):
+
+
+  status:str = "ok"
+  neo4j: str = "unknown"
+  gemini_configured: bool = False
+
     # TODO-3 (Required): Add three fields — `status`, `neo4j`, and `gemini_configured`.
     #
     # `status` — overall API health, default "ok"
@@ -68,4 +65,3 @@ class HealthResponse(BaseModel):
     # For fields with defaults you don't need Field(...), just use =
     #   Example: status: str = "ok"
     #   Or with description: status: str = Field(default="ok", description="...")
-    pass
